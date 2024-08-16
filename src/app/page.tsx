@@ -9,11 +9,13 @@ import {
   FaFacebook,
   FaInstagram,
 } from "react-icons/fa";
+import { usePathname } from "next/navigation";
 
 export default function Home() {
   const [scrolling, setScrolling] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
   const [isClosing, setIsClosing] = useState(false);
+  const pathname = usePathname();
 
   // Handle menu toggle
   const toggleMenu = () => {
@@ -125,8 +127,12 @@ export default function Home() {
                     </li>
                     <li>
                       <a
-                        href="#services"
-                        className="text-white text-[12px] font-sans hover:bg-[#151916] rounded-lg transition p-2"
+                        href="#"
+                        className={`text-white ${
+                          pathname === "/"
+                            ? "bg-black px-3 py-2 rounded"
+                            : "hover:bg-gray-600 px-3 py-2 rounded"
+                        }`}
                       >
                         SERVICES
                       </a>
